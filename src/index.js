@@ -50,7 +50,6 @@ async function handleFileAsync(e) {
       })
       .map(s => replaceAll(s, enToRu));
     searchInputElement.disabled = false;
-    console.log('dataArray ==> ', dataArray);
   }
 }
 
@@ -59,7 +58,10 @@ function handleSearch(inputValue) {
     return i.includes(inputValue);
   });
   if (found) {
-    setResultMessage('Номер найден');
+    const foundArray = dataArray.filter(s => {return s.includes(inputValue)});
+    const numberOfFound = foundArray.length;
+    const foundString = foundArray.join(', ')
+    setResultMessage(`Номер найден ${numberOfFound} раз: ${foundString}.`);
   } else {
     setResultMessage('Номер не найден');
   }

@@ -10,17 +10,20 @@
 <header class="header">
   <h1>Поиск по номеру</h1>
 </header>
-<main>
+<main class="main">
   <div>
     <h2>Загрузите файл с данными</h2>
     <input type="file" id="input_dom_element"
            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+
+  </div>
+  <div>
     <h2>Выполните поиск</h2>
     <form action="#" id="search">
       <input type="text" id="search-input" placeholder="X000XX000" disabled>
     </form>
+    <p id="result"></p>
   </div>
-  <div><p id="result"></p></div>
 
 </main>
 </body>
