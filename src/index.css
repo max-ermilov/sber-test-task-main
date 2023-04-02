@@ -1,0 +1,85 @@
+.page {
+  margin: 40px auto;
+  background-color: #ddd;
+  max-width: 100vw;
+  width: 100%;
+  transition: 0.4s;
+  font-family: sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.header {
+  width: 100%;
+  margin: 0 auto;
+  min-height: 74px;
+  display: block;
+  text-align: center;
+}
+
+.main {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+}
+
+.upload {
+  padding: 40px;
+  display: block;
+  min-height: 150px;
+  max-width: 400px;
+  width: 100%;
+  background-color: #ffd992;
+
+}
+
+.search {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  visibility: visible;
+  min-height: 150px;
+  max-width: 400px;
+  width: 100%;
+  background-color: #ffd992;
+}
+
+.search__input {
+  width: 100%;
+  min-height: 30px;
+  outline: none;
+  margin: 0;
+  border: none;
+  padding: 10px;
+  text-align: center;
+}
+
+.search:has(input:disabled) {
+    display: none;
+    visibility: hidden;
+  }
+
+#result {
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: white ;
+  font-family: sans-serif;
+  font-weight: bolder;
+}
+
+#result:has(*) {
+  padding: 10px;
+}

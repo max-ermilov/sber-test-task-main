@@ -11,18 +11,17 @@
   <h1>Поиск по номеру</h1>
 </header>
 <main class="main">
-  <div>
+  <div class="upload">
     <h2>Загрузите файл с данными</h2>
     <input type="file" id="input_dom_element"
            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-
   </div>
-  <div>
-    <h2>Выполните поиск</h2>
-    <form action="#" id="search">
-      <input type="text" id="search-input" placeholder="X000XX000" disabled>
-    </form>
-    <p id="result"></p>
+  <div class="search">
+    <h2 style="width: 100%">Выполните поиск</h2>
+<!--    <form action="#" id="search">-->
+      <input class="search__input" type="text" id="search-input" placeholder="X000XX000" disabled>
+<!--    </form>-->
+    <span id="result"></span>
   </div>
 
 </main>
