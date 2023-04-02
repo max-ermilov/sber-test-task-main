@@ -9,6 +9,30 @@ let dataArray = [];
 
 const setResultMessage = (message = '') => {
   resultElement.textContent = message.toString();
+};
+
+const enToRu = {
+  'A': 'А',
+  'B': 'В',
+  'E': 'Е',
+  'K': 'К',
+  'M': 'М',
+  'H': 'Н',
+  'O': 'О',
+  'P': 'Р',
+  'C': 'С',
+  'T': 'Т',
+  'Y': 'У',
+  'X': 'Х',
+  ' ': ''
+};
+
+function replaceAll(str, mapObj) {
+  const regExp = new RegExp(Object.keys(mapObj).join("|"), "gi");
+
+  return str.replace(regExp, function (matched) {
+    return mapObj[matched.toUpperCase()];
+  });
 }
 
 async function handleFileAsync(e) {
@@ -18,19 +42,22 @@ async function handleFileAsync(e) {
   } else {
     const fileData = await file.arrayBuffer();
     const workbook = readFile(fileData);
-
-    dataArray = workbook?.Strings
-      .map(s => {return s.t})
-      .filter(s => {return s !== '' && s.length > 4});
+    dataArray = workbook?.Strings?.map(s => {
+        return s.t
+      })
+      .filter(s => {
+        return s !== '' && s.length > 4
+      })
+      .map(s => replaceAll(s, enToRu));
     searchInputElement.disabled = false;
+    console.log('dataArray ==> ', dataArray);
   }
-
 }
 
 function handleSearch(inputValue) {
-const found = dataArray.some(i => {
-  return i.includes(inputValue);
-});
+  const found = dataArray.some(i => {
+    return i.includes(inputValue);
+  });
   if (found) {
     setResultMessage('Номер найден');
   } else {
@@ -41,9 +68,10 @@ const found = dataArray.some(i => {
 function handleInput(e) {
   e.preventDefault();
   const i = e.target.value.trim().toString().toUpperCase();
-  e.target.value = i;
-  if (i.length >= 3) {
-    handleSearch(i);
+  const input = replaceAll(i, enToRu);
+  e.target.value = input;
+  if (input.length >= 3) {
+    handleSearch(input);
   } else {
     setResultMessage();
   }
