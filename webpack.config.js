@@ -16,7 +16,7 @@ module.exports = {
   mode: 'development',
   devServer: {
     static: path.resolve(__dirname, './dist'),
-    allowedHosts: all,
+    allowedHosts: "all",
     open: true,
     compress: true,
     port: 8080
