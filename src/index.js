@@ -8,7 +8,7 @@ const resultElement = document.getElementById('result');
 let dataArray = [];
 
 const setResultMessage = (message = '') => {
-  resultElement.textContent = message.toString();
+  resultElement.textContent = message;
 };
 
 const enToRu = {
@@ -60,8 +60,8 @@ function handleSearch(inputValue) {
   if (found) {
     const foundArray = dataArray.filter(s => {return s.includes(inputValue)});
     const numberOfFound = foundArray.length;
-    const foundString = foundArray.join(', ')
-    setResultMessage(`Номер найден ${numberOfFound} раз: ${foundString}.`);
+    const foundString = foundArray.join(',<br>')
+    resultElement.innerHTML = `Номер найден ${numberOfFound} раз:<br><br>${foundString}.`;
   } else {
     setResultMessage('Номер не найден');
   }
