@@ -8,7 +8,7 @@ const resultElement = document.getElementById('result');
 let dataArray = [];
 
 const setResultMessage = (message = '') => {
-  resultElement.textContent = message;
+  resultElement.innerHTML = message;
 };
 
 const enToRu = {
@@ -43,8 +43,8 @@ async function handleFileAsync(e) {
     const fileData = await file.arrayBuffer();
     const workbook = readFile(fileData);
     dataArray = workbook?.Strings?.map(s => {
-        return s.t
-      })
+      return s.t
+    })
       .filter(s => {
         return s !== '' && s.length > 4
       })
@@ -61,9 +61,9 @@ function handleSearch(inputValue) {
     const foundArray = dataArray.filter(s => {return s.includes(inputValue)});
     const numberOfFound = foundArray.length;
     const foundString = foundArray.join(',<br>')
-    resultElement.innerHTML = `Номер найден ${numberOfFound} раз:<br><br>${foundString}.`;
+    setResultMessage(`Номер найден ${numberOfFound} раз:<br><br>${foundString}.`);
   } else {
-    setResultMessage('Номер не найден');
+    setResultMessage('Номер не найден<br>');
   }
 }
 
